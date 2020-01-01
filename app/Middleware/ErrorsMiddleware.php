@@ -36,6 +36,8 @@
             $errors_path = \config('path.errors');
             $errors_layout = $errors_path.'.error';
 
+            //die($this->error);
+
             $this->response->setTemplate($errors_layout);
             $this->response->render($errors_path.'.404', [], 404);
         }
