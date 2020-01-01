@@ -1,7 +1,4 @@
 {
-    "require": {
-        "ekolo/ekolo-framework": "^0.1.5"
-    },
     "license": "UHTEC/license",
     "authors": [
         {
@@ -18,7 +15,10 @@
     "autoload": {
         "files": ["bootstrap/helpers.php"],
         "psr-4": {
-            
+            "App\\": "app/"
         }
+    },
+    "require": {
+        "ekolo/ekolo-framework": "^0.2.5"
     }
 }

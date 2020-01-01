@@ -6,6 +6,8 @@
     
     $router = new Router;
 
+    $router->get('/', 'PagesController@index');
+
     $router->get('/', function (Request $request, Response $response) {
 
 		$response->render('pages.index', [

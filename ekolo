@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+
+	$argv = $_SERVER['argv'];
+
+
+
+	echo "\n";
+
+	if (count($argv) >= 2) {
+		$server = $argv[1];
+		$serverTab = explode(':', $server);
+
+		if (($serverTab[0] == 'server') || $serverTab[0] == 'serve') {
+
+			if (count($serverTab) >= 2) {
+
+				$port = $serverTab[1];
+				$port = (int) $port;
+				$port = is_int($port) ? $port : 3000;
+			}else {
+				$port = 3000;
+			}
+
+			echo "Le server Ekolo est lancé sur http://localhost:".$port." \n";
+
+			$exec = shell_exec('php -S localhost:'.$port);
+
+			
+		}else {
+			echo "Pour lancer le serveur tapez 'php ekolo server:port' \n'port' c'est la port que le serveur sera lancé \n";
+		}
+	}else {
+		echo "Pour lancer le serveur tapez 'php ekolo server:port' \n'port' c'est la port que le serveur sera lancé \n";
+	}
