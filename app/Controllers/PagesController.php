@@ -8,17 +8,13 @@
 
     class PagesController extends Controller {
 
+        /**
+         * Renvoi à la page d'accueil
+         */
         public function index(Request $request, Response $response)
         {
-            $response->render('users.liste', [
-                'title' => 'Liste des utilisteurs',
-                'users' => [
-                    'liste' => [
-                        'id' => 1,
-                        'nom' => 'Bolenge',
-                        'prenom' => 'Nancy'
-                    ]
-                ]
+            $response->render('pages.index', [
+                'title' => 'Liste des utilisteurs'
             ]);
         }
 

@@ -4,7 +4,7 @@
     use Ekolo\Framework\Bootstrap\Middleware;
 
     // Required des routes
-    $users = require './routes/users.php';
+    $pages = require './routes/pages.php';
 
     // Middleware gérant les erreurs (A ne pas enlever ce code)
     $app->middleware('errors', function (Middleware $middleware) {
@@ -13,4 +13,4 @@
     
 
     // Appel des routes
-    $app->use('/', $users);
+    $app->use('/', $pages);
