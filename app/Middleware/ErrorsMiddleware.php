@@ -1,6 +1,6 @@
 <?php
 
-    namespace Ekolo\App\Middleware;
+    namespace App\Middleware;
 
     use Ekolo\Framework\Bootstrap\Middleware;
     use Ekolo\Framework\Http\Request;

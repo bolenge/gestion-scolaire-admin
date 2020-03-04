@@ -1,6 +1,6 @@
 <?php
 
-    namespace Ekolo\App\Controllers;
+    namespace App\Controllers;
 
     use Ekolo\Framework\Bootstrap\Controller;
     use Ekolo\Framework\Http\Request;
@@ -17,5 +17,7 @@
                 'title' => 'Liste des utilisteurs'
             ]);
         }
+
+        public function contact 
 
     }
