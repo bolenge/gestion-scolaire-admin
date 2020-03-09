@@ -6,17 +6,16 @@
     
     $router = new Router;
 
+    $router->get('/creation', function (Request $request, Response $response) {
 
-    $router->get('/', function (Request $request, Response $response) {
-
-		$response->render('pages.index', [
-            'title' => 'Connexion',
-            'page' => 'connexion'
+		$response->render('users.creation', [
+            'title' => "Création d'un utilisateur",
+            'page' => 'create_user'
         ]);
     	
     });
 
-    $router->get('/dashboard', function (Request $request, Response $response) {
+    $router->get('/liste', function (Request $request, Response $response) {
 
         $response->render('pages.dashboard', [
             'title' => 'Tableau de board',

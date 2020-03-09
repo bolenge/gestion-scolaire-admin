@@ -5,12 +5,17 @@
 
     // Required des routes
     $pages = require './routes/pages.php';
+    $users = require './routes/users.php';
+    $ecoles = require './routes/ecoles.php';
 
     // Middleware gérant les erreurs (A ne pas enlever ce code)
     $app->middleware('errors', function (Middleware $middleware) {
+        //debug($middleware);
         $middleware->getError();
     });
     
 
     // Appel des routes
     $app->use('/', $pages);
+    $app->use('/utilisateurs', $users);
+    $app->use('/ecoles', $ecoles);
