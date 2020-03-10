@@ -19,6 +19,7 @@
         }
     },
     "require": {
-        "ekolo/ekolo-framework": "^0.2.6"
+        "ekolo/ekolo-framework": "^0.2.6",
+        "ekolo/eko-request": "^0.0.1"
     }
 }
