@@ -1,0 +1,12 @@
+/**************************************************************************\
+* CE FICHEIR CONTIENT LA LISTE DES VARIABLES CSS UTILISEES DANS LE PROJET *
+\**************************************************************************/
+
+:root {
+    --green: #38dba3;
+    --blue: #3f6ad8;
+    --bleuOnHover: #2955c8;
+    --red: #d62d20;
+    --yellow: #ffa700;
+    --white: #eee;   
+}

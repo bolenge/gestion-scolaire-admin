@@ -31,7 +31,7 @@
     </div>    
     <div class="scrollbar-sidebar">
         <div class="app-sidebar__inner">
-            <div class="widget-content p-0">
+            <div class="widget-content">
                 <div class="widget-content-wrapper">
                     <div class="widget-content-left">
                         <div class="btn-group">
@@ -40,21 +40,21 @@
                                 <i class="fa fa-angle-down ml-2 opacity-8"></i>
                             </a>
                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                <button type="button" tabindex="0" class="dropdown-item">Mon compte</button>
-                                <button type="button" tabindex="0" class="dropdown-item">Parametres</button>
+                                <a href="/admins/account/username" tabindex="0" class="dropdown-item"><i class="pe-7s-user"></i>&nbsp;&nbsp;Mon compte</a>
+                                <a href="/admins/parameters" tabindex="0" class="dropdown-item"><i class="pe-7s-config"></i>&nbsp;&nbsp;Parametres</a>
                                 <div tabindex="-1" class="dropdown-divider"></div>
-                                <button type="button" tabindex="0" class="dropdown-item">Deconnexion</button>
+                                <a href="/admins/logout" tabindex="0" class="dropdown-item"><i class="pe-7s-power"></i>&nbsp;&nbsp;Déconnexion</a>
                             </div>
                         </div>
                     </div>
                     <div class="widget-content-left  ml-3 header-user-info">
                         <div class="widget-heading cl-white">
-                            JOSUE MBUYU
+                            <?= session('admin')['username'] ?>
                         </div>
                         <div class="widget-subheading cl-white">
-                            Developpeur
+                            <?= ucfirst(str_replace('-', ' ', session('admin')['role'])) ?>
                         </div>
-                        <button style="border-radius: 400px;" class="mt-1 btn btn-danger btn-lg btn-block"><i class="pe-7s-power"></i> DECONNEXION</button>
+                        <!-- <button style="border-radius: 400px;" class="mt-1 btn btn-danger btn-lg btn-block"><i class="pe-7s-power"></i> DECONNEXION</button> -->
                     </div>
                 </div>
             </div><hr>
@@ -66,17 +66,17 @@
                         Menu principal
                     </a>
                 </li>
-                <li class="app-sidebar__heading">Uitilisateurs</li>
+                <li class="app-sidebar__heading">Administrateurs</li>
                 <li>
-                    <a href="/utilisateurs/creation">
+                    <a href="/admins/create">
                         <i class="metismenu-icon pe-7s-add-user"></i>
-                        Création d'un utilisateur
+                        Créer un administrateur
                     </a>
                 </li>
                 <li>
-                    <a href="forms-controls.html">
+                    <a href="/admins/liste">
                         <i class="metismenu-icon pe-7s-users">
-                        </i>Liste des utilisateurs
+                        </i>Liste des administrateurs
                     </a>
                 </li>
                 <li class="app-sidebar__heading">ECOLES</li>

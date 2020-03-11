@@ -1,3 +1,15 @@
+/*****************************************************************\
+*    CE FICHEIR EST RESERVE AUX STYLES A AJOUTER DANS LE PROJET   *
+\*****************************************************************/
+
+@import './variables.css';
+@import './main.css';
+@import './loader.css';
+
 body{
     background-color: #fff;
+}
+
+.pointer {
+    cursor: pointer !important;
 }
