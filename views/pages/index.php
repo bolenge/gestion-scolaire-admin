@@ -9,7 +9,7 @@
 
                     <form class="needs-validation" id="form-login-admin" mathod="POST" autocomplete="off">
                         <div class="position-relative form-group input-group">
-                            <input name="username" id="username" placeholder="Nom d'utilisateur" type="text" class="form-control p-4 border-right-0 rounded-left" required="required" />
+                            <input name="username" id="username" placeholder="Nom d'utilisateur" type="text" class="form-control p-4 border-right-0 rounded-left" minlength="3" required="required" />
 
                             <div class="input-group-prepend pointer border-left-0">
                                 <span class="input-group-text input-group-text-username bradius-rb bg-white border-left-0 rounded-right"><i class="fa fa-user-circle"></i></span>
@@ -17,7 +17,7 @@
                             <div class="invalid-feedback" id="feedback-username">Ce champ est obligatoire</div>
                         </div>
                         <div class="position-relative input-group">
-                            <input name="password" id="password" placeholder="Mot de passe" type="password" class="form-control border-right-0 p-4 rounded-left" required="required" />
+                            <input name="password" id="password" placeholder="Mot de passe" type="password" class="form-control border-right-0 p-4 rounded-left" required="required" minlength="6" />
 
                             <div class="input-group-prepend pointer border-left-0" onclick="manipuleEyePassword(document.querySelector('#password'), document.querySelector('#eyePassword i'))">
                                 <span class="input-group-text input-group-text-password bradius-rb border-left-0 bg-white rounded-right" id="eyePassword"><i class="fa fa-eye"></i></span>
