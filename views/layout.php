@@ -26,5 +26,8 @@
         <script type="text/javascript" src="/public/js/main.js"></script>
         <script type="text/javascript" src="/public/js/init.js"></script>
         <script type="module" src="/public/js/router.js" ></script>
+        <script>
+            
+        </script>
     </body>
 </html> 

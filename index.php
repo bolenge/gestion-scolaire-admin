@@ -7,6 +7,7 @@
     $pages  = require './routes/pages.php';
     $ecoles = require './routes/ecoles.php';
     $admins = require './routes/admins.php';
+    $medias = require './routes/medias.php';
     
     // Middleware gérant les erreurs (A ne pas enlever ce code)
     $app->middleware('errors', function (Middleware $middleware) {
@@ -22,3 +23,4 @@
     $app->use('/', $pages);
     $app->use('/ecoles', $ecoles);
     $app->use('/admins', $admins);
+    $app->use('/medias', $medias);

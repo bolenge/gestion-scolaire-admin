@@ -54,10 +54,11 @@ function router(url, callback) {
 /**
  * Ajoute le loader sur l'élément ciblé
  * @param {Element} element L'élément en question
+ * @param {Boolean} toPrepend S'il faut mettre le loader au devant ou pas
  * @return {void}
  */
-function makeSuperLoader(element) {
-    $(element).append(`<div class="card-loading" id="superLoader">
+function makeSuperLoader(element, toPrepend = false) {
+    let content = `<div class="card-loading" id="superLoader">
         <div class="showbox">
             <div class="loader">
                 <svg class="circular" viewBox="25 25 50 50">
@@ -65,7 +66,13 @@ function makeSuperLoader(element) {
                 </svg>
             </div>
         </div>
-    </div>`);
+    </div>`;
+
+    if (toPrepend) {
+        $(element).prepend(content);
+    }else {
+        $(element).append(content);
+    }
 }
 
 /**
@@ -96,4 +103,87 @@ function objectNotEmpty(object) {
  */
 function redirect(url) {
     window.location.pathname = url
+}
+
+/**
+ * Renvoi le Host du site
+ * @return {String}
+ */
+function getHost() {
+    return window.location.origin;
+}
+
+/**
+ * Permet de créer l'interface à afficher l'image à uploader
+ * @param {Files} file L'objet file du fichier uploader
+ * @param {Object} prev L'élément à uploader
+ * @param {String} listClassNames Les classes qu'il faut ajouter à l'image
+ */
+function createThumbnail(file, prev, listClassNames) {
+    var reader = new FileReader();
+    
+    reader.onload = function () {
+        
+        var imgElement = document.createElement('img');
+            imgElement.style.maxWidth = '100%';
+            imgElement.style.maxHeight = '100%';
+            imgElement.src = this.result;
+            prev.innerHTML = '';
+            imgElement.className = listClassNames;
+            prev.appendChild(imgElement);
+
+    }
+
+    reader.readAsDataURL(file);
+}
+
+/**
+ * Permet de véifier si le type (extension) du fichier passé est image
+ * @param {String} imgType Le type de l'image
+ */
+function isImgFile(imgType) {
+    var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'];
+
+    if (~allowedTypes.indexOf(imgType)) {
+         return true;
+    }else{
+        return false;
+    }
+}
+
+/**
+ * Permet d'afficher directement une image quand on l'upload
+ * @param {Element} id_file L'identifiant du champ du fichier
+ * @param {Element} id_previous L'identifiant de l'élément où à afficher
+ * @param {String} listClassNames Les classes qu'il faut ajouter à l'images
+ * @return {void}
+ */
+function printImgOnUpload(file, id_previous, listClassNames) {
+    var prev = document.querySelector("#"+id_previous),
+        imgType;
+    
+    if (listClassNames == undefined) {
+        listClassNames = '';
+    }
+
+    imgType = file.name.split('.');
+    imgType = imgType[imgType.length - 1].toLowerCase();
+
+    if (isImgFile(imgType)) {
+        
+        createThumbnail(file, prev, listClassNames);
+
+        return true;
+    }else{
+        alert("Extension non valide");
+        return false;
+    }
+}
+
+/**
+ * Renvoi le message warning
+ * @param {String} element L'élément lié au message à envoyer
+ */
+function getWarningMessage(element = null) {
+    return "Une erreur est survenue "+element+" <br/>Si cette erreur persiste veuillez contacter l'équipe de développement UHTEC";
 }

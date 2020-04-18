@@ -19,21 +19,22 @@
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <form class="">
-                            <div class="form-row">
-                                <div class="col-md-3">
-                                    <span style="position: relative;">
-                                        <span id="userAvatar" style="position: relative;">
-                                            <img src="/public/images/avatars/default-user-avatar.png" style="width: 150px;" alt="">
-                                        </span>
-                                        
-                                        <span class="text-center">
-                                            <input type="file" name="media" id="avatar" style="visibility: hidden;" />
-                                            <label for="avatar" id="labelAdminAvatar" class="text-info pointer"><i class="fa fa-camera fa-2x"></i></label>
-                                        </span>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <span style="position: relative;">
+                                    <span id="containerAvatarAdmin" style="position: relative;display: inline-block;">
+                                        <img src="/public/images/avatars/user-avatar.png" class="avatar-create-admin" alt="Avatar de l'admin">
                                     </span>
-                                </div>
-                                <div class="col-md-9">
+                                    
+                                    <span class="text-center">
+                                        <input type="file" name="media" id="media_avatar" style="visibility: hidden;" />
+                                        <label for="media_avatar" id="labelAdminAvatar" class="text-info pointer"><i class="fa fa-camera fa-2x"></i></label>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="col-md-9">
+                                <form id="form-create-admin" method="POST" autocomplete="off">
+                                    <input type="hidden" name="id_media_avatar" id="id_media_avatar" />
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
@@ -49,13 +50,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="nom" class="">Email</label>
-                                                <input name="email" id="nom" type="email" class="form-control">
+                                                <label for="email" class="">Email</label>
+                                                <input name="email" id="email" type="email" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="nom" class="">Rôle</label>
+                                                <label for="role" class="">Rôle</label>
                                                 <select name="role" id="role" class="form-control">
                                                     <option value="simple-admin">Simple admin</option>
                                                     <option value="super-admin">Super admin</option>
@@ -64,23 +65,27 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="nom" class="">Nom d'utilisateur (Login)</label>
-                                                <input name="email" id="nom" type="email" class="form-control">
+                                                <label for="username" class="">Nom d'utilisateur (Login)</label>
+                                                <input name="username" id="username" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="position-relative form-group">
-                                                <label for="nom" class="">Mot de passe</label>
-                                                <input name="email" id="nom" type="email" class="form-control">
+                                                <label for="password" class="">Mot de passe</label>
+                                                <input name="password" id="password" type="password" class="form-control pr-5" />
+
+                                                <span style="position: absolute;z-index: 999999;right: 10px;bottom: 10px;" class="pointer" onclick="manipuleEyePassword(document.querySelector('#password'), document.querySelector('#eyePassword i'))">
+                                                    <span class="" id="eyePassword"><i class="fa fa-eye"></i></span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <button class="mt-2 btn btn-primary btn-lg col-md-12">Enregistrement <i class="pe-7s-diskette"></i></button>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="card-stat" style="margin-bottom: 20px;">

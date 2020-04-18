@@ -6,7 +6,7 @@
     use Ekolo\Framework\Http\Request;
     use Ekolo\Framework\Http\Response;
 
-    class PagesController extends Controller {
+    class ExempleController extends Controller {
 
         /**
          * Renvoi à la page d'accueil (de connexion de l'admin)

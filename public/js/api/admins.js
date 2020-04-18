@@ -1,6 +1,8 @@
-/**
- * Gère les admins
- */
+/*********************************************************\
+ * CE FICHIER EST LIE EST TOUT CE QUI CONCERNE LES ADMINS *
+\*********************************************************/
+
+import { uploadFile } from "./medias.js";
 
 /**
  * Permet de faire connecter un administrateur
@@ -92,4 +94,63 @@ function loginAdmin() {
     })
 }
 
-export {loginAdmin}
+/**
+ * Permet de lancer l'upload de l'avatar de l'admin
+ */
+function uploadAdminAvatar() {
+    $('#media_avatar').on('change', (e) => {
+        let $this = e.currentTarget;
+        let files = $this.files;
+
+        makeSuperLoader($('#containerAvatarAdmin'), true);
+
+        uploadFile('media_avatar', (results, err) => {
+            if (err) {
+                Snackbar.show({
+                    text: err,
+                    pos: 'top-center',
+                    showAction: true,
+                    actionText: "Fermer",
+                    duration: 9000,
+                    textColor: '#333',
+                    backgroundColor: getColorByKey('danger')
+                });
+            }else {
+                stopSuperLoader();
+                if (results.success) {
+                    let data = results.results;
+                    printImgOnUpload(files[0], 'containerAvatarAdmin', 'avatar-create-admin');
+                    $('#id_media_avatar').val(data.id);
+                }else {
+                    Snackbar.show({
+                        text: results.message,
+                        pos: 'top-center',
+                        showAction: true,
+                        actionText: "Fermer",
+                        duration: 9000,
+                        textColor: '#333',
+                        backgroundColor: getColorByKey('danger')
+                    });
+                }
+            }
+        })
+    })
+}
+
+/**
+ * Permet de créer un nouvel admin
+ * @return {void}
+ */
+function createAdmin() {
+    $('#form-create-admin').on('submit', (e) => {
+        e.preventDefault();
+
+        let $this = e.currentTarget;
+
+        let data = $this.serialize();
+
+        console.log(data)
+    })
+}
+
+export {loginAdmin, uploadAdminAvatar, createAdmin}

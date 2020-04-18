@@ -1,4 +1,4 @@
-import { loginAdmin } from "./api/admins.js";
+import { loginAdmin, uploadAdminAvatar, createAdmin } from "./api/admins.js";
 
 (function() {
     'use strict';
@@ -19,19 +19,18 @@ import { loginAdmin } from "./api/admins.js";
 })();
 
 router('/', () => {
-    // if ($('#form-login-admin').hasClass('was-validated')) {
-    //     $('#form-login-admin .input-group-text').each(function () {
-    //         $(this).css({
-    //             border: '1px solid #d92550',
-    //             borderLeft: 'none'
-    //         })
-    //     })
-        
-    // }
-
     loginAdmin();
 })
 
 router('/dashboard', () => {
     // alert("Page dashboard")
+})
+
+router('/medias', () => {
+    alert("Les médias !!!!!")
+})
+
+router('/admins/create', () => {
+    uploadAdminAvatar();
+    createAdmin();
 })
