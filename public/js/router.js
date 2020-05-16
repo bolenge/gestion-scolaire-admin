@@ -1,4 +1,4 @@
-import { loginAdmin, uploadAdminAvatar, createAdmin } from "./api/admins.js";
+import { loginAdmin, uploadAdminAvatar, submitCreateAdmin } from "./api/admins.js";
 
 (function() {
     'use strict';
@@ -32,5 +32,5 @@ router('/medias', () => {
 
 router('/admins/create', () => {
     uploadAdminAvatar();
-    createAdmin();
+    submitCreateAdmin();
 })

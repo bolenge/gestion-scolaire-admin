@@ -66,7 +66,8 @@ function getColorByKey(key = 'info', defaultValue = null) {
         danger: '#ffa5b2',
         success: '#6bd816',
         info: '#82d6ff',
-        warning: '#f2db5b'
+        warning: '#f2db5b',
+        white: '#ffffff'
     }
 
     return colors.hasOwnProperty(key) ? colors[key] : defaultValue;
@@ -131,9 +132,7 @@ function stopSuperLoader() {
  * @return {Boolean}
  */
 function objectNotEmpty(object) {
-    let objectKeys = Object.keys(object);
-
-    return objectKeys.length > 0;
+    return object ? Object.keys(object).length > 0 : false;
 }
 
 /**
@@ -234,4 +233,13 @@ function printImgOnUpload(file, id_previous, listClassNames) {
  */
 function getWarningMessage(element = null) {
     return "Une erreur est survenue "+element+" <br/>Si cette erreur persiste veuillez contacter l'équipe de développement UHTEC";
+}
+
+/**
+ * Permet de mettre la prémière lettre d'un texte en majuscule
+ * @param {String} text Le text à traiter
+ * @return {String}
+ */
+function ucFirst(text) {
+    return text[0].toUpperCase() + text.substring(1);
 }

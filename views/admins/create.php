@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="main-card mb-3 card">
+                <div class="main-card mb-3 card" id="card-create-admin">
                     <div class="card-body">
                         <div class="form-row">
                             <div class="col-md-3">
@@ -33,7 +33,7 @@
                                 </span>
                             </div>
                             <div class="col-md-9">
-                                <form id="form-create-admin" method="POST" autocomplete="off">
+                                <form id="form-create-admin" method="POST" autocomplete="on">
                                     <input type="hidden" name="id_media_avatar" id="id_media_avatar" />
                                     <div class="form-row">
                                         <div class="col-md-6">
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="mt-2 btn btn-primary btn-lg col-md-12">Enregistrement <i class="pe-7s-diskette"></i></button>
+                                            <button class="mt-2 btn btn-primary btn-lg col-md-4 offset-4">Enregistrement <i class="pe-7s-diskette"></i></button>
                                         </div>
                                     </div>
                                 </form>

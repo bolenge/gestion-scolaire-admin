@@ -3,12 +3,14 @@
 \*********************************************************/
 
 import { uploadFile } from "./medias.js";
+import { createActeur } from "./acteurs.js";
+import { findAndShowErrorOnRequested, showAlertMessage } from "./helpers.js";
 
 /**
  * Permet de faire connecter un administrateur
  * @return {void}
  */
-function loginAdmin() {
+export function loginAdmin() {
     
     $('#form-login-admin').on('submit', (e) => {
         e.preventDefault();
@@ -97,7 +99,7 @@ function loginAdmin() {
 /**
  * Permet de lancer l'upload de l'avatar de l'admin
  */
-function uploadAdminAvatar() {
+export function uploadAdminAvatar() {
     $('#media_avatar').on('change', (e) => {
         let $this = e.currentTarget;
         let files = $this.files;
@@ -141,22 +143,80 @@ function uploadAdminAvatar() {
  * Permet de créer un nouvel admin
  * @return {void}
  */
-function createAdmin() {
+export function submitCreateAdmin() {
     $('#form-create-admin').on('submit', (e) => {
         e.preventDefault();
 
         let $this = e.currentTarget;
-
         let data_serialized = $($this).serialize();
         let data = $.unserialize(data_serialized);
-        let acteur = {
-            nom: data.nom,
-            prenom: data.prenom,
-            email: data.email,
-        }
+        let acteur = data;
 
+        acteur.email = acteur.email.replace('%40', '@');
+
+        makeSuperLoader($('#card-create-admin'))
         
+        createActeur(acteur, (err_acteur, result_acteur) => {
+            if (!err_acteur) {
+                if (result_acteur.success) {
+                    const admin = {
+                        id_acteur: result_acteur.results.id,
+                        role: data.role,
+                        username: data.username,
+                        password: data.password
+                    }
+
+                    createAdmin(admin, (err_admin, result_admin) => {
+                        if (!err_admin) {
+                            if (result_admin.success) {
+                                showAlertMessage("Admin créé avec succès !", 'success', 4000, '#fff');
+
+                                $this.reset();
+                                $('.avatar-create-admin').attr('src', '/public/images/avatars/user-avatar.png');
+                            }else {
+                                findAndShowErrorOnRequested(result_admin);
+                            }
+                        }else {
+                            showAlertMessage(err_admin, 'danger', 5000);
+                        }
+
+                        stopSuperLoader();
+                    })
+                }else {
+                    findAndShowErrorOnRequested(result_acteur);
+                    stopSuperLoader();
+                }
+            }else {
+                showAlertMessage(err_acteur, 'danger');
+                stopSuperLoader();
+            }
+        })
     })
 }
 
-export {loginAdmin, uploadAdminAvatar, createAdmin}
+/**
+  * Permet de créer un nouvel admin
+  * @param {Object} new_admin Les données de l'admin à créer
+  * @param {Function} callback La fonction callback à appeler
+  * @returns {void}
+  */
+ export function createAdmin(new_admin, callback) {
+    $.ajax({
+        url: getHostAPI()+'/admins/createAdmin',
+        type: 'POST',
+        data: new_admin,
+        dataType: 'json',
+        success: (result) => {
+            if (result) {
+                callback(null, result);
+            }else {
+                callback(getWarningMessage(), null);
+            }
+        },
+        error: (err) => {
+            if (err) {
+                callback(getWarningMessage(), null);
+            }
+        }
+    })
+}
