@@ -147,9 +147,15 @@ function createAdmin() {
 
         let $this = e.currentTarget;
 
-        let data = $this.serialize();
+        let data_serialized = $($this).serialize();
+        let data = $.unserialize(data_serialized);
+        let acteur = {
+            nom: data.nom,
+            prenom: data.prenom,
+            email: data.email,
+        }
 
-        console.log(data)
+        
     })
 }
 
