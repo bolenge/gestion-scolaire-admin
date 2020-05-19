@@ -20,6 +20,9 @@
     },
     "require": {
         "ekolo/ekolo-framework": "^0.2.6",
-        "ekolo/eko-request": "^0.0.1"
+        "ekolo/eko-request": "^0.0.1",
+        "silex/silex": "^2.3",
+        "monolog/monolog": "^2.0",
+        "symfony/twig-bridge": "^5.0"
     }
 }
